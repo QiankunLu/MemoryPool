@@ -174,9 +174,9 @@ MemoryPool* MemoryPoolInit(mem_size_t maxmempoolsize, mem_size_t mempoolsize) {
 
 void* MemoryPoolAlloc(MemoryPool* mp, mem_size_t wantsize) {
     if (wantsize <= 0) return NULL;
-    mem_size_t total_needed_size =
-            MP_ALIGN_SIZE(wantsize + MP_CHUNKHEADER + MP_CHUNKEND);
-    if (total_needed_size > mp->mem_pool_size) return NULL;
+    mem_size_t total_needed_size = wantsize + MP_CHUNKHEADER + MP_CHUNKEND;
+    if (MP_ALIGN_SIZE(total_needed_size) > mp->mem_pool_size)
+        return NULL;
 
     _MP_Memory *mm = NULL, *mm1 = NULL;
     _MP_Chunk *_free = NULL, *_not_free = NULL;

@@ -1,6 +1,6 @@
 CC = gcc
 CPP = g++
-GCCFLAG = -Wall -lpthread
+GCCFLAG = -Wall -pthread
 SOURCES = memorypool.c
 MAIN_SOURCES = test.cpp
 MAIN_OUTPUT = test
